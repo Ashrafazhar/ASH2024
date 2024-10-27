@@ -10,9 +10,9 @@ POP_SIZE = 500
 
 #MUT_RATE: Rate at which our string will be changed.
 MUT_RATE = 0.2
-#TARGET = st.text_input("Enter your name")
+TARGET = st.text_input("Enter your name")
 #TARGET: Our goal.
-TARGET = ' ashraf shafik'
+#TARGET = ' ashraf shafik'
 
 #GENES: Options from which our population would be created.
 GENES = ' abcdefghijklmnopqrstuvwxyz'
