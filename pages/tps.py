@@ -53,4 +53,5 @@ for i, (city, (city_x, city_y)) in enumerate(city_coords.items()):
 
 fig.set_size_inches(16, 12)
 plt.show()
+st.pyplot(fig)
 
