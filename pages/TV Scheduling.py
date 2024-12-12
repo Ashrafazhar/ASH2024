@@ -30,6 +30,24 @@ for program, ratings in program_ratings_dict.items():
 
 import random
 
+
+import streamlit as st
+
+# Streamlit interface for parameter input
+st.title("Genetic Algorithm Parameter Input")
+
+# Create sliders for input
+CO_R = st.slider("Crossover Rate (CO_R)", min_value=0.0, max_value=0.95, value=0.8, step=0.01)
+MUT_R = st.slider("Mutation Rate (MUT_R)", min_value=0.01, max_value=0.05, value=0.02, step=0.01)
+
+# Display selected parameters
+st.write("### Selected Parameters")
+st.write(f"- **Crossover Rate (CO_R):** {CO_R}")
+st.write(f"- **Mutation Rate (MUT_R):** {MUT_R}")
+
+# Placeholder for genetic algorithm logic
+st.write("### Run your Genetic Algorithm using the above parameters.")
+
 ##################################### DEFINING PARAMETERS AND DATASET ################################################################
 # Sample rating programs dataset for each time slot.
 ratings = program_ratings_dict
