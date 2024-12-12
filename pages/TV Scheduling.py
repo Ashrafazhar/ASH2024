@@ -91,14 +91,7 @@ def crossover(schedule1, schedule2):
     child1 = schedule1[:crossover_point] + schedule2[crossover_point:]
     child2 = schedule2[:crossover_point] + schedule1[crossover_point:]
     return child1, child2
-
-def genetic_algorithm(initial_schedule, generations, population_size, crossover_rate, mutation_rate, elitism_size):
-    population = [initial_schedule]
-    for _ in range(population_size - 1):
-        random_schedule = initial_schedule.copy()
-        random.shuffle(random_schedule)
-        population.append(random_schedule)
-        
+      
 # mutating
 def mutate(schedule):
     mutation_point = random.randint(0, len(schedule) - 1)
