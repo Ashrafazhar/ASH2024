@@ -155,4 +155,8 @@ st.write("\nFinal Optimal Schedule:")
 for time_slot, program in enumerate(final_schedule):
     st.write(f"Time Slot {all_time_slots[time_slot]:02d}:00 - Program {program}")
 
-st.write("Total Ratings:", fitness_function(final_schedule))
+st.write("Total Ratings:", fitness_function(final_schedule)) 
+
+# Display the results in a table
+st.write("## Final Optimal Schedule")
+st.table(schedule_table)
