@@ -160,3 +160,6 @@ st.write("Total Ratings:", fitness_function(final_schedule))
 # Display the results in a table
 st.write("## Final Optimal Schedule")
 st.table(schedule_table)
+
+# Display the total ratings
+st.write("### Total Ratings:", fitness_function(final_schedule))
