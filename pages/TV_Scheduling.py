@@ -155,4 +155,21 @@ st.write("\nFinal Optimal Schedule:")
 for time_slot, program in enumerate(final_schedule):
     st.write(f"Time Slot {all_time_slots[time_slot]:02d}:00 - Program {program}")
 
-st.write("Total Ratings:", fitness_function(final_schedule))
+# Add the table representation of the final schedule
+import pandas as pd
+
+# Prepare data for the table
+schedule_data = {
+    "Time Slot": [f"{time_slot:02d}:00" for time_slot in all_time_slots[:len(final_schedule)]],
+    "Program": final_schedule
+}
+
+# Create a DataFrame
+schedule_df = pd.DataFrame(schedule_data)
+
+# Display the table in Streamlit
+st.write("\nFinal Optimal Schedule (Table Format):")
+st.table(schedule_df)
+
+# Display the total ratings
+st.write("Total Ratings:", fitness_function(final_schedule)) 
