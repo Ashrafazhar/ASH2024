@@ -1,4 +1,5 @@
 import csv
+import streamlit as st
 
 # Function to read the CSV file and convert it to the desired format
 def read_csv_to_dict(file_path):
@@ -17,7 +18,7 @@ def read_csv_to_dict(file_path):
     return program_ratings
 
 # Path to the CSV file
-file_path = '/content/program_ratings.csv'
+file_path = 'pages/program_ratings.csv'
 
 # Get the data in the required format
 program_ratings_dict = read_csv_to_dict(file_path)
@@ -28,6 +29,24 @@ for program, ratings in program_ratings_dict.items():
 
 
 import random
+
+
+import streamlit as st
+
+# Streamlit interface for parameter input
+st.title("Genetic Algorithm Parameter Input")
+
+# Create sliders for input
+CO_R = st.slider("Crossover Rate (CO_R)", min_value=0.0, max_value=0.95, value=0.8, step=0.01)
+MUT_R = st.slider("Mutation Rate (MUT_R)", min_value=0.01, max_value=0.05, value=0.02, step=0.01)
+
+# Display selected parameters
+st.write("### Selected Parameters")
+st.write(f"- **Crossover Rate (CO_R):** {CO_R}")
+st.write(f"- **Mutation Rate (MUT_R):** {MUT_R}")
+
+# Placeholder for genetic algorithm logic
+st.write("### Run your Genetic Algorithm using the above parameters.")
 
 ##################################### DEFINING PARAMETERS AND DATASET ################################################################
 # Sample rating programs dataset for each time slot.
@@ -90,7 +109,7 @@ def crossover(schedule1, schedule2):
     child1 = schedule1[:crossover_point] + schedule2[crossover_point:]
     child2 = schedule2[:crossover_point] + schedule1[crossover_point:]
     return child1, child2
-
+      
 # mutating
 def mutate(schedule):
     mutation_point = random.randint(0, len(schedule) - 1)
@@ -150,8 +169,15 @@ genetic_schedule = genetic_algorithm(initial_best_schedule, generations=GEN, pop
 
 final_schedule = initial_best_schedule + genetic_schedule[:rem_t_slots]
 
-print("\nFinal Optimal Schedule:")
-for time_slot, program in enumerate(final_schedule):
-    print(f"Time Slot {all_time_slots[time_slot]:02d}:00 - Program {program}")
+# Prepare the results for display
+schedule_table = [
+    {"Time Slot": f"{all_time_slots[time_slot]:02d}:00", "Program": program}
+    for time_slot, program in enumerate(final_schedule)
+]
 
-print("Total Ratings:", fitness_function(final_schedule))
+# Display the results in a table
+st.write("## Final Optimal Schedule")
+st.table(schedule_table)
+
+# Display the total ratings
+st.write("### Total Ratings:", fitness_function(final_schedule))
