@@ -152,13 +152,8 @@ genetic_schedule = genetic_algorithm(initial_best_schedule, generations=GEN, pop
 
 final_schedule = initial_best_schedule + genetic_schedule[:rem_t_slots]
 
-# Create the schedule table
-schedule_table = create_schedule_table(final_schedule, all_time_slots)
+st.write("\nFinal Optimal Schedule:")
+for time_slot, program in enumerate(final_schedule):
+    st.write(f"Time Slot {all_time_slots[time_slot]:02d}:00 - Program {program}")
 
-# Display the table in Streamlit
-st.write("### Final Optimal Schedule")
-st.table(schedule_table)
-
-# Display total ratings
-st.write("### Total Ratings")
-st.write(fitness_function(final_schedule))
+st.write("Total Ratings:", fitness_function(final_schedule)) 
