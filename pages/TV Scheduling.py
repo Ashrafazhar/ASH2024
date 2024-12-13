@@ -156,3 +156,19 @@ for time_slot, program in enumerate(final_schedule):
     st.write(f"Time Slot {all_time_slots[time_slot]:02d}:00 - Program {program}")
 
 st.write("Total Ratings:", fitness_function(final_schedule))
+
+# Prepare data for the table
+def create_schedule_table(time_slots, schedule):
+    table_data = []
+    for time_slot, program in enumerate(schedule):
+        table_data.append({"Time Slot": f"{time_slots[time_slot]:02d}:00", "Program": program})
+    
+    total_rating = fitness_function(schedule)
+    table_data.append({"Time Slot": "Total Ratings", "Program": total_rating})
+    return pd.DataFrame(table_data)
+
+# Create and display the table
+schedule_table = create_schedule_table(all_time_slots, final_schedule)
+st.write("### Final Optimal Schedule")
+st.table(schedule_table)
+
