@@ -2,7 +2,7 @@ import csv
 import streamlit as st
 
 # Function to read the CSV file and convert it to the desired format
-def read_csv_to_dict(file_path):
+def read_csv_to_dict(program_ratings_old_path):
     program_ratings = {}
     
     with open(file_path, mode='r', newline='') as file:
@@ -21,7 +21,7 @@ def read_csv_to_dict(file_path):
 file_path = 'pages/program_ratings.csv'
 
 # Get the data in the required format
-program_ratings_dict = read_csv_to_dict(file_path)
+program_ratings_dict = read_csv_to_dict(program_ratings_old_path)
 
 # Print the result (you can also return or process it further)
 for program, ratings in program_ratings_dict.items():
