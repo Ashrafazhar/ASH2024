@@ -35,7 +35,7 @@ POP = 50
 
 # Streamlit inputs for parameters
 CO_R = st.sidebar.slider("Crossover Rate (CO_R)", 0.0, 0.95, 0.8, 0.01)
-MUT_R = st.sidebar.slider("Mutation Rate (MUT_R)", 0.01, 0.05, 0.2, 0.01)
+MUT_R = st.sidebar.slider("Mutation Rate (MUT_R)", 0.01, 0.05, 0.02, 0.01)
 
 EL_S = 2
 
